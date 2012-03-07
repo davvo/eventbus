@@ -95,7 +95,7 @@ public class TestEventBus {
     }
 
     @Test
-    public void testFireEventFromSourceNotHandledAnySource() {
+    public void testAddHandlerFireEventFromSource() {
         eventBus.addHandler(handler1);
         eventBus.fireEventFromSource(event1, this);
         verify(handler1).handleEvent(event1, this);
