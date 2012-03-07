@@ -11,7 +11,7 @@
     public class MyHandler implements Handler<MyEvent> {
   
         @Override
-        public void handleEvent(MyEvent event) {
+        public void handleEvent(MyEvent event, Object source) {
             System.out.println("Handle " + event);
         }
         
