@@ -36,9 +36,11 @@ public class SimpleEventBus implements EventBus {
     @Override
     @SuppressWarnings("unchecked")
     public <T extends Event> void fireEventFromSource(T event, Object source) {
-        for (HandlerWrapper wrapper : handlers.get(event.getClass())) {
-            if (source == null || source == wrapper.source) {
-                ((Handler<T>) wrapper.handler).handleEvent(event);
+        if (handlers.containsKey(event.getClass())) {
+            for (HandlerWrapper wrapper : handlers.get(event.getClass())) {
+                if (source == null || wrapper.source == null || source == wrapper.source) {
+                    ((Handler<T>) wrapper.handler).handleEvent(event, source);
+                }
             }
         }
     }

@@ -4,6 +4,6 @@ public interface Handler<T extends Event> {
 
     public Class<T> getType();
 
-    public void handleEvent(T event);
+    public void handleEvent(T event, Object source);
 
 }
