@@ -5,15 +5,24 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+/**
+ * A simple {@link my.eventbus.EventBus} implementation
+ */
 public class SimpleEventBus implements EventBus {
 
     private ConcurrentMap<Class<? extends Event>, Set<HandlerWrapper>> handlers = new ConcurrentHashMap<Class<? extends Event>, Set<HandlerWrapper>>();
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <T extends Event> HandlerRegistration addHandler(Handler<T> handler) {
         return addHandlerToSource(handler, null);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <T extends Event> HandlerRegistration addHandlerToSource(Handler<T> handler, Object source) {
         HandlerWrapper wrapper = new HandlerWrapper(handler, source);
@@ -28,11 +37,17 @@ public class SimpleEventBus implements EventBus {
         return wrapper;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public <T extends Event> void fireEvent(T event) {
         fireEventFromSource(event, null);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @SuppressWarnings("unchecked")
     public <T extends Event> void fireEventFromSource(T event, Object source) {
