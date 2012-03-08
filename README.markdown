@@ -1,12 +1,14 @@
 ## A simple java event bus
 
-### Implement Event
+http://davvo.github.com/eventbus/
+
+**Implement Event**
 
     public class MyEvent implements Event {
-
+        ...
     }
 
-### Implement Handler
+**Implement Handler**
     
     public class MyHandler implements Handler<MyEvent> {
   
@@ -15,12 +17,13 @@
             System.out.println("Handle " + event);
         }
         
+        ...
+        
     }
 
-### Start firing events
+**Start firing events**
 
     EventBus eventBus = new SimpleEventBus();
-
     eventBus.addHandler(new MyHandler());
-    
+    ...
     eventBus.fireEvent(new MyEvent());
