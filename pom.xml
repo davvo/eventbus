@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name>eventbus</name>
-    <url>https://github.com/davvo</url>
+    <url>http://davvo.github.com/eventbus</url>
 
     <scm>
         <connection>scm:git:git@github.com:davvo/eventbus.git</connection>
